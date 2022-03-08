@@ -1,16 +1,25 @@
-<div class=" my-4">
-    <form>
+<div class=" container my-4">
+    <form #formUsuario="ngForm" (ngSubmit)="onSumit()">
+
         <div class=" mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Nombre</label>
+            <input type="text" class="form-control"   name="nombre" #nombre ="ngModel" [(ngModel)]="usuario.nombre" [maxlength]="20" [minlength]="2" required />
+            <span *ngIf="nombre.touched && !nombre.valid"> Error</span>
         </div>
         <div class=" mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Apellido</label>
+            <input type="email" class="form-control"  name="apellido" #apellido="ngModel"[(ngModel)]="usuario.apellido" [maxlength]="20" [minlength]="5" required />
+            <span *ngIf="apellido.touched && !apellido.valid"> Error</span>
+
+        </div>
+        <div class=" mb-3">
+            <label for="floatingInput">Edad</label>
+            <input type="number" class="form-control"  name="edad" #edad="ngModel"[(ngModel)]="usuario.edad" [maxlength]="100" [minlength]="1" required />
+            <span *ngIf="edad.touched && !edad.valid"> Error</span>
+
         </div>
         <div class="mb-3">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon1">Enviar</button>
-            <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+            <input type="submit" class="btn btn-outline-success my-3" value="Registar">
         </div>
     </form>
 </div>
